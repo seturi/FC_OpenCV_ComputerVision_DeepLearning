@@ -5,7 +5,7 @@ from tensorflow.python.platform import gfile
 
 tf.logging.set_verbosity(tf.logging.ERROR)
 
-mnist = input_data.read_data_sets('./MNIST_data/', one_hot=True)
+mnist = input_data.read_data_sets('./ch12//MNIST_data/', one_hot=True)
 
 #
 # hyper parameters
@@ -64,7 +64,7 @@ print('Test Accuracy:', accuracy)
 
 # Freeze variables and save pb file
 output_graph_def = graph_util.convert_variables_to_constants(sess, sess.graph_def, ['prob'])
-with gfile.FastGFile('./mnist_cnn.pb', 'wb') as f:
+with gfile.FastGFile('./ch12/mnist_cnn.pb', 'wb') as f:
     f.write(output_graph_def.SerializeToString())
 
 print('mnist_cnn.pb file is created successfully!!')
